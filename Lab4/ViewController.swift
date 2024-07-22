@@ -44,7 +44,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        // Listen for add to favorites notification
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAddToFavorites(notification:)), name: .addToFavorites, object: nil)
     }
+    
+    @objc func handleAddToFavorites(notification: Notification) {
+        if let cell = notification.object as? MovieCell, let indexPath = collectionView.indexPath(for: cell) {
+            let movie = movies[indexPath.row]
+            FavoriteMovies.shared.add(movie: movie)
+            print("Movie added to favorites: \(movie.title)")
+        }
+    }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
@@ -157,3 +170,4 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
 }
+
