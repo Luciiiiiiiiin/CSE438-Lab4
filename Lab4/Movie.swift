@@ -23,3 +23,15 @@ struct Movie: Codable {
     let overview: String
     let vote_count: Int
 }
+
+struct TrailerResults: Codable {
+    let results: [Trailer]
+}
+
+struct Trailer: Codable {
+    let id: String
+    let key: String
+    let name: String
+    let site: String
+    let type: String
+}
