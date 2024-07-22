@@ -58,72 +58,32 @@ class MovieCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    func configure(with movie: Movie) {
-//        titleLabel.text = movie.title
-//        if let posterPath = movie.poster_path {
-//            let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)"
-//            if let url = URL(string: urlString) {
-//                URLSession.shared.dataTask(with: url) { data, response, error in
-//                    if let data = data, let image = UIImage(data: data) {
-//                        DispatchQueue.main.async {
-//                            self.imageView.image = image
-//                        }
-//                    }
-//                }.resume()
-//            }
-//        }
-//    }
-    
-//    func configure(with movie: Movie) {
-//        titleLabel.text = movie.title
-//        if let posterPath = movie.poster_path {
-//            let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)" as NSString
-//            
-//            // Check if the image is cached
-//            if let cachedImage = MovieCell.imageCache.object(forKey: urlString) {
-//                imageView.image = cachedImage
-//            } else {
-//                // If not cached, download the image
-//                if let url = URL(string: urlString as String) {
-//                    URLSession.shared.dataTask(with: url) { data, response, error in
-//                        if let data = data, let image = UIImage(data: data) {
-//                            // Cache the image
-//                            MovieCell.imageCache.setObject(image, forKey: urlString)
-//                            DispatchQueue.main.async {
-//                                self.imageView.image = image
-//                            }
-//                        }
-//                    }.resume()
-//                }
-//            }
-//        }
-//    }
     func configure(with movie: Movie) {
-            titleLabel.text = movie.title
-            if let posterPath = movie.poster_path {
-                let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)" as NSString
-                
-                // Check if the image is cached
-                if let cachedImage = MovieCell.imageCache.object(forKey: urlString) {
-                    print("Image fetched from cache for URL: \(urlString)")
-                    imageView.image = cachedImage
-                } else {
-                    // If not cached, download the image
-                    if let url = URL(string: urlString as String) {
-                        URLSession.shared.dataTask(with: url) { data, response, error in
-                            if let data = data, let image = UIImage(data: data) {
-                                // Cache the image
-                                MovieCell.imageCache.setObject(image, forKey: urlString)
-                                DispatchQueue.main.async {
-                                    self.imageView.image = image
-                                }
-                                print("Image downloaded and cached for URL: \(urlString)")
-                            } else {
-                                print("Failed to create image from data for URL: \(urlString)")
+        titleLabel.text = movie.title
+        if let posterPath = movie.poster_path {
+            let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)" as NSString
+            
+            // Check if the image is cached
+            if let cachedImage = MovieCell.imageCache.object(forKey: urlString) {
+                print("Image fetched from cache for URL: \(urlString)")
+                imageView.image = cachedImage
+            } else {
+                // If not cached, download the image
+                if let url = URL(string: urlString as String) {
+                    URLSession.shared.dataTask(with: url) { data, response, error in
+                        if let data = data, let image = UIImage(data: data) {
+                            // Cache the image
+                            MovieCell.imageCache.setObject(image, forKey: urlString)
+                            DispatchQueue.main.async {
+                                self.imageView.image = image
                             }
-                        }.resume()
-                    }
+                            print("Image downloaded and cached for URL: \(urlString)")
+                        } else {
+                            print("Failed to create image from data for URL: \(urlString)")
+                        }
+                    }.resume()
                 }
             }
         }
+    }
 }

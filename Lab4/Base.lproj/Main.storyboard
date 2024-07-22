@@ -95,27 +95,31 @@
             </objects>
             <point key="canvasLocation" x="1110.6870229007634" y="-589.43661971830988"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="792-dF-BOv">
             <objects>
-                <viewController id="tIb-oh-lWn" sceneMemberID="viewController">
+                <viewController id="tIb-oh-lWn" customClass="FavoritesViewController" customModule="Lab4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cFY-Em-LBd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-zQ-NeK">
-                                <rect key="frame" x="104" y="260" width="118" height="30"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5Hh-dc-WPV">
+                                <rect key="frame" x="0.0" y="57" width="393" height="722"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U37-46-Yxo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="suV-He-5UT"/>
+                    <connections>
+                        <outlet property="tableView" destination="5Hh-dc-WPV" id="tjX-dd-GAZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wth-JT-fwh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160" y="151"/>
+            <point key="canvasLocation" x="1159.5419847328244" y="150.70422535211267"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="Fxp-1W-kqa">
